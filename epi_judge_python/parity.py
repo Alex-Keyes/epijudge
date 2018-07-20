@@ -15,5 +15,16 @@ def parity(x):
         return 1
 
 
+# This version of parity is _much_ faster than the brute force party Such is the power of divide and conquer!
+def parity_fast(x):
+    x ^= x >> 32
+    x ^= x >> 16
+    x ^= x >> 8
+    x ^= x >> 4
+    x ^= x >> 2
+    x ^= x >> 1
+    return x & 0x1
+
+
 if __name__ == '__main__':
-    exit(generic_test.generic_test_main("parity.py", 'parity.tsv', parity))
+    exit(generic_test.generic_test_main("parity_fast.py", 'parity.tsv', parity_fast))
