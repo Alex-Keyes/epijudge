@@ -6,10 +6,34 @@ from test_framework.test_utils import enable_executor_hook
 
 RED, WHITE, BLUE = range(3)
 
+"""
+I know that this is a solved djikstra problem I just don't remember what it was....
+I think it has something to do with the pivot val, and then we use the pivot value to keep track of when we are done
+we need need 3 vars 
+i, j and n
+
+why won't my array pass? 
+It wouldn't pass because I was working off of the pivot index, not the value at that specific index.
+Since I wasn't working on the value of the array at the pivot index, I wasn't searching anything.
+
+"""
+
 
 def dutch_flag_partition(pivot_index, A):
-    # TODO - you fill in here.
-    return
+    pivot = A[pivot_index]
+    i = 0
+    j = 0
+    n = len(A) - 1
+    while j <= n:
+        if A[j] < pivot:
+            A[i], A[j] = A[j], A[i]
+            i += 1
+            j += 1
+        elif A[j] > pivot:
+            A[j], A[n] = A[n], A[j]
+            n -= 1
+        else:
+            j += 1
 
 
 @enable_executor_hook
